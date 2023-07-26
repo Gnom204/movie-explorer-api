@@ -4,7 +4,7 @@ const secretKey = 'my-mega-secret-key';
 
 const HTTP_STATUS_BAD_REQUEST = {
   status: 400,
-  message: 'переданы невалидные данные',
+  message: 'Переданы невалидные данные',
 };
 
 const HTTP_STATUS_NOT_FOUND = {
@@ -42,6 +42,11 @@ const HTTP_STATUS_CONFLICT_REQUEST = {
   message: 'Пользователь уже существует',
 };
 
+const HTTP_STATUS_WRONG_DATA = {
+  status: 401,
+  message: 'Неправильные email или пароль',
+};
+
 module.exports = {
   HTTP_STATUS_BAD_REQUEST,
   HTTP_STATUS_SERVER_ERROR,
@@ -51,6 +56,7 @@ module.exports = {
   HTTP_STATUS_UNAUTHORIZED_REQUEST,
   HTTP_STATUS_FORBIDDEN_REQUEST,
   HTTP_STATUS_CONFLICT_REQUEST,
+  HTTP_STATUS_WRONG_DATA,
   regexForImageUrl,
   secretKey,
 };

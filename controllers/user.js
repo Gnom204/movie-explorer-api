@@ -9,6 +9,8 @@ const {
   HTTP_STATUS_CREATE_REQUEST,
   HTTP_STATUS_SERVER_ERROR,
   HTTP_STATUS_CONFLICT_REQUEST,
+  HTTP_STATUS_UNAUTHORIZED_REQUEST,
+  HTTP_STATUS_WRONG_DATA,
 } = require('../utils/constants');
 const UnauthorizedError = require('../errors/unauthorized-error');
 const { JWT_SECRET } = require('../config');
@@ -46,7 +48,7 @@ const login = (req, res, next) => {
   const { email, password } = req.body;
 
   User.findOne({ email })
-    .orFail(new UnauthorizedError('Пользователь не авторизован'))
+    .orFail(new UnauthorizedError(HTTP_STATUS_UNAUTHORIZED_REQUEST.message))
     .then((user) => {
       bcrypt.compare(password, user.password)
         .then((matched) => {
@@ -61,7 +63,7 @@ const login = (req, res, next) => {
               data: user.toJSON(),
             });
           } else {
-            throw new UnauthorizedError('Неправильные email или пароль');
+            throw new UnauthorizedError(HTTP_STATUS_WRONG_DATA.message);
           }
         })
         .catch(next);
