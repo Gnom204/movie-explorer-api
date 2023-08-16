@@ -24,6 +24,7 @@ app.use(cookieParser());
 app.use(requestLogger);
 app.use(cors({
   origin: allowedCors,
+  credentials: true,
 }));
 app.use(router);
 app.use(() => {
