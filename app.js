@@ -11,7 +11,7 @@ const { requestLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/not-found-err');
 const { HTTP_STATUS_NOT_FOUND } = require('./utils/constants');
 const errorHandler = require('./middlewares/errorHandler');
-// const allowedCors = require('./middlewares/corsProtect');
+const allowedCors = require('./middlewares/corsProtect');
 const limiter = require('./utils/limiter');
 
 const app = express();
@@ -22,7 +22,9 @@ app.use(limiter);
 app.use(express.json());
 app.use(cookieParser());
 app.use(requestLogger);
-app.use(cors());
+app.use(cors({
+  origin: allowedCors,
+}));
 app.use(router);
 app.use(() => {
   throw new NotFoundError(HTTP_STATUS_NOT_FOUND.message);
