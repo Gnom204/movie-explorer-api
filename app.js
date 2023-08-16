@@ -22,10 +22,7 @@ app.use(limiter);
 app.use(express.json());
 app.use(cookieParser());
 app.use(requestLogger);
-app.use(cors({
-  credentials: true,
-  origin: allowedCors,
-}));
+app.use(cors());
 app.use(router);
 app.use(() => {
   throw new NotFoundError(HTTP_STATUS_NOT_FOUND.message);
