@@ -4,6 +4,7 @@ const allowedCors = [
   'http://praktikum.tk',
   'http://dipgnom.nomoredomains.xyz',
   'https://dipgnom.nomoredomains.xyz',
+  'https://dipgnom.nomoreparties.sbs',
 ];
 
 module.exports = allowedCors;
