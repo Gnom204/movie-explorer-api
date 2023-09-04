@@ -4,7 +4,7 @@ const UnauthorizedError = require('../errors/unauthorized-error');
 const { secretKey, HTTP_STATUS_UNAUTHORIZED_REQUEST } = require('../utils/constants');
 
 const auth = (req, res, next) => {
-  const token = req.cookie.jwt;
+  const token = req.cookies.jwt;
   if (!token) {
     next(new UnauthorizedError(HTTP_STATUS_UNAUTHORIZED_REQUEST.message));
   }
