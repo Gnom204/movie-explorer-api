@@ -66,14 +66,13 @@ const movieInfoValidator = celebrate({
         .required(),
 
       trailerLink: Joi.string()
-        .pattern(regexForImageUrl)
         .required(),
 
       thumbnail: Joi.string()
         .pattern(regexForImageUrl)
         .required(),
 
-      movieId: Joi.string()
+      movieId: Joi.number()
         .required(),
 
       nameRU: Joi.string()

@@ -1,5 +1,4 @@
-const regexForImageUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
-
+const regexForImageUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg)/;
 const secretKey = 'my-mega-secret-key';
 
 const HTTP_STATUS_BAD_REQUEST = {
