@@ -99,7 +99,8 @@ const createUsers = (req, res, next) => {
 };
 
 const logout = (req, res) => {
-  res.status(202).clearCookie('jwt').send({ message: 'cookie-cleared' });
+  res.clearCookie('jwt');
+  return res.send({ message: 'cookie-cleared' });
 };
 
 module.exports = {
